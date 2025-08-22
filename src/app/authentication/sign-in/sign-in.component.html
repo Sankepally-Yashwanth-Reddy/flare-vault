@@ -1,0 +1,120 @@
+<section class="fv-sign-in-section">
+    <div class="fv-sign-in-container">
+        <div class="fv-header d-flex">
+            <h1 class="visually-hidden">
+                {{ 'APP_NAME_L' | translate }}
+            </h1>
+            <div class="fv-title-desc-container">
+                <h2 class="fv-title">
+                    {{ 'SIGN_IN_L' | translate }}
+                </h2>
+                <p class="fv-description">
+                    {{ 'WELCOME_BACK_L' | translate}}
+                </p>
+            </div>
+            <div class="fv-actions-container">
+                <button type="button" class="fv-lang-change-btn fv-icon-button" mat-icon-button
+                    attr.aria-label="{{ 'CHANGE_LANGUAGE_L' | translate }}"
+                    matTooltip="{{ 'CHANGE_LANGUAGE_L' | translate }}" [matMenuTriggerFor]="langMenu"
+                    aria-label="Example icon-button with a menu">
+                    <span class="fv-globe-icon"></span>
+                </button>
+            </div>
+        </div>
+        <form class="fv-sign-in-form" [formGroup]="signIn" (ngSubmit)="onSignInSubmit()">
+
+            <div class="fv-form-group">
+                <label for="email" class="fv-form-label">
+                    {{ 'EMAIL_L' | translate }}
+                </label>
+                <input type="email" id="email" class="fv-form-input" formControlName="email"
+                    placeholder="{{'ENTER_YOUR_EMAIL_L' | translate}}" required>
+
+                <div *ngIf="signIn.get('email')?.touched && signIn.get('email')?.invalid" class="fv-error-message">
+                    <span *ngIf="signIn.get('email')?.errors?.['required']" class="fv-error-text ">
+                        {{'EMAIL_REQUIRED_L' | translate}}
+                    </span>
+                    <span *ngIf="signIn.get('email')?.errors?.['email']" class="fv-error-text">
+                        {{'PLEASE_ENTER_VALID_EMAIL_L' | translate}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="fv-form-group">
+                <label for="password" class="fv-form-label">
+                    {{ 'PASSWORD_L' | translate }}
+                </label>
+                <input type="password" id="password" class="fv-form-input" formControlName="password"
+                    placeholder="{{'ENTER_YOUR_PASSWORD_L' | translate}}" required>
+
+                <div *ngIf="signIn.get('password')?.touched && signIn.get('password')?.invalid"
+                    class="fv-error-message">
+                    <span *ngIf="signIn.get('password')?.errors?.['required']" class="fv-error-text">
+                        {{'PASSWORD_REQUIRED_L' | translate}}
+                    </span>
+                    <span *ngIf="signIn.get('password')?.errors?.['minlength']" class="fv-error-text">
+                        {{'PASSWORD_MIN_LENGTH_L' | translate}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="fv-action-item-group">
+                <div class="fv-switch-link">
+                    <div class="form-check form-switch fv-bs-switch">
+                        <input class="form-check-input fv-form-switch-input" type="checkbox" role="switch"
+                            id="rememberMe">
+                        <label class="form-check-label fv-form-switch-label" for="rememberMe">
+                            {{ 'REMEMBER_ME_L' | translate }}
+                        </label>
+                    </div>
+                </div>
+                <a routerLink="/forgot-password" class="fv-g-link">
+                    {{'FORGOT_PASSWORD_L' | translate}}
+                </a>
+            </div>
+
+            <div class="fv-bottom-actions-group">
+                <button type="submit" class="fv-sign-in-btn" (click)="onSignInSubmit()">
+                    <span class="login-icon fv-icon mt-1"></span>
+                    <span>
+                        {{'SIGN_IN_L' | translate}}
+                    </span>
+                    @if (isLoading) {
+                    <span class="fv-spinner-container">
+                        <img src="assets/svg/flarevault-loader.svg" alt="{{'LOADING_L' | translate}}"
+                            class="fv-spinner-img" height="35" width="35">
+                    </span>
+                    }
+                </button>
+                <button type="button" class="fv-sign-in-with-google-btn" (click)="onGoogleSignIn()">
+                    <span class="google-icon fv-icon"></span>
+                    <span>
+                        {{'SIGN_IN_WITH_GOOGLE_L' | translate}}
+                    </span>
+                    @if (isLoading) {
+                    <span class="fv-spinner-container">
+                        <img src="assets/svg/flarevault-loader.svg" alt="loading..." class="fv-spinner-img"
+                        height="35" width="35">
+                    </span>
+                    }
+                </button>
+                <p class="fv-link-paragraph">
+                    {{"DONT_HAVE_AN_ACCOUNT_L" | translate}} <a class="fv-g-link" routerLink="/sign-up">
+                        {{'SIGN_UP_L' | translate}}
+                    </a>
+                </p>
+            </div>
+        </form>
+
+    </div>
+</section>
+
+
+<mat-menu #langMenu="matMenu" class="px-1">
+    @for (lang of languages; track lang) {
+    <button type="button" mat-menu-item (click)="changeLanguage(lang.code)">
+        <mat-icon class="fv-lang-icon" [ngClass]="lang.icon"></mat-icon>
+        <span class="fv-lang-name">{{ lang.name | translate }}</span>
+    </button>
+    }
+</mat-menu>

@@ -1,0 +1,122 @@
+<nav class="fv-navbar" role="navigation" aria-label="Flarevault Navigation Bar">
+  <a routerLink="/home" aria-label="Flarevault Home Link" matTooltip="Flarevault" class="fv-home-link">
+    <img src="assets/images/flarevault-logo.png" alt="Flarevault logo" class="fv-logo-img">
+  </a>
+  <form class="fv-g-search-form">
+    <input type="search" name="search" id="search" class="fv-search-input" placeholder="Search...">
+    <span class="fv-search-icon"></span>
+  </form>
+  <ul class="fv-menu-list">
+    <li class="fv-menu-item">
+      <div class="dropdown">
+        <button type="button" aria-label="Notifications" mat-icon-button matTooltip="Notifications" mat-icon-button
+          class="fv-header-icon-btn" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="fv-bell-icon"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <h2 class="dropdown-header">
+              {{'NOTIFICATIONS_L' | translate}}
+            </h2>
+          </li>
+          <li>
+            <ul class="list-unstyled">
+              <li><a class="dropdown-item" mat-menu-item>Action</a></li>
+              <li><a class="dropdown-item" mat-menu-item>Another action</a></li>
+              <li><a class="dropdown-item" mat-menu-item>Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- <li class="fv-menu-item">
+      <button type="button" aria-label="Profile" mat-icon-button matTooltip="Profile" class="fv-header-icon-btn"
+        [matMenuTriggerFor]="profileMenu">
+        <span class="fv-profile-icon"></span>
+      </button>
+    </li> -->
+    <li class="fv-menu-item">
+      <div class="dropdown fv-profile-dropdown">
+        <button class="btn btn-light fv-profile-dropdown-toggler d-flex align-items-center gap-1" type="button" mat-button
+          data-bs-toggle="dropdown" aria-expanded="false" matTooltip="{{getUserName()}} | {{'PROFILE_L' | translate}}">
+          <!-- <span class="fv-profile-icon"></span> -->
+          <div class="fv-avatar-container">
+            <!-- <img src="/assets/avatars/avatar-1.png" alt="User Avatar" class="fv-avatar-img rounded-5" height="20"> -->
+            <span class="fv-abbr-text rounded-5 p-1">
+              {{getUserName() | slice:0:2 | uppercase}}
+            </span>
+          </div>
+          <!-- <span class="fv-username">
+            {{getUserName()}}
+          </span> -->
+        </button>
+        <ul class="dropdown-menu fv-dropdown-items-container">
+          <li class="fv-dropdown-list-item">
+            <a class="fv-dropdown-item dropdown-item fv-profile-menu-item" mat-menu-item
+              matTooltip="{{getUserName()}} | {{getUserEmail()}}" matTooltipPosition="left">
+              <!-- <mat-icon>account_circle_outline</mat-icon> -->
+              <span class="fv-profile-container">
+                <span class="fv-username">
+                  {{getUserName()}}
+                </span>
+                <span class="fv-user-email">
+                  {{getUserEmail()}}
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="fv-dropdown-list-item">
+            <hr class="dropdown-divider">
+          </li>
+          <li class="fv-dropdown-list-item">
+            <a routerLink="/profile" class="fv-dropdown-item dropdown-item" mat-menu-item
+              matTooltip="{{'PROFILE_L' | translate}}" matTooltipPosition="left">
+              <mat-icon>account_circle_outline</mat-icon>
+              <span>profile</span>
+            </a>
+          </li>
+          <li class="fv-dropdown-list-item">
+            <a routerLink="/settings" disabled class="fv-dropdown-item dropdown-item disabled" mat-menu-item
+              aria-disabled="true" matTooltip="{{'SETTINGS_L' | translate}}" matTooltipPosition="left">
+              <mat-icon>settings</mat-icon>
+              <span>Settings</span>
+            </a>
+          </li>
+          <li class="fv-dropdown-list-item">
+            <hr class="dropdown-divider">
+          </li>
+          <li class="fv-dropdown-list-item">
+            <button type="button" class="fv-dropdown-item dropdown-item" (click)="onLogout()" mat-menu-item
+              matTooltip="{{'LOGOUT_L' | translate}}" matTooltipPosition="left">
+              <mat-icon>logout</mat-icon>
+              <span>Logout</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<!-- <mat-menu #profileMenu="matMenu">
+  <ul class="fv-profile-menu list-unstyled px-1">
+    <li>
+      <a routerLink="/profile" mat-menu-item class="fv-nav-link">
+        <mat-icon>account_circle_outline</mat-icon>
+        <span>Profile</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/settings" mat-menu-item disabled class="fv-nav-link">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </a>
+    </li>
+    <li>
+      <button type="button" mat-menu-item class="fv-nav-link" (click)="onLogout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </li>
+  </ul>
+</mat-menu> -->

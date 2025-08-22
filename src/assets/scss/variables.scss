@@ -1,0 +1,116 @@
+:root {
+    /*
+    🎨 1. Default Theme – “Modern Light” (Recommended)
+Look & Feel: Clean, professional, subtle shadows, high readability.
+Use Case: Ideal for dashboards, admin panels, or B2B apps.
+
+🎯 Palette
+Element	Color
+Primary	#1E88E5 (Blue 600)
+Accent	#43A047 (Green 600)
+Background	#F5F7FA (Very Light Gray)
+Surface	#FFFFFF (White)
+Text (Primary)	#212121
+Text (Secondary)	#616161
+    */
+
+    --primary-color: #125B9B;
+    --primary-hover-color: #1565C0;
+    --accent-color: #43A047;
+    --accent-hover-color: #388E3C;
+    --background-color: #F5F7FA;
+    --surface-color: #FFFFFF;
+    --surface-hover-color: #F0F0F0;
+    --text-primary-color: #212121;
+    --text-secondary-color: #616161;
+    --success-color: #43A047;
+    --info-color: #1E88E5;
+    --warning-color: #FBC02D;
+    --danger-color: #D32F2F;
+    --text-white: #FFFFFF;
+
+    --cardBg-color: #FFFFFF;
+    --cardHoverBg-color: #F0F0F0;
+    --cardBorder-color: #E0E0E0;
+    --cardShadow-color: rgba(0, 0, 0, 0.1);
+
+    --inputBg-color: #FFFFFF;
+    --inputBorder-color: #949494;
+    --labelTextColor: #616161;
+    --selectOption-bg-color: #FFFFFF;
+    --selectOption-text-color: #212121;
+    --selectOption-hover-bg-color: var(--primary-color);
+
+    --fontFamily: 'Roboto', sans-serif;
+    --focusOutline: #1E88E5;
+
+    --borderRadius: 4px;
+    --transitionDuration: 0.3s;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --buttonPadding: 12px 24px;
+    --glassyBg: rgba(255, 255, 255, 0.5);
+    /* Glassmorphism effect */
+    --AuthDarkBg: rgba(0, 0, 0, 0.5);
+    /* Dark background for authentication sections */
+    --switch-label: #616161;
+    --google-button-bg-color: #FFFFFF;
+    --google-button-border-color: #949494;
+    --google-button-hover-bg-color: #F0F0F0;
+    --error-text-color: #972020;
+    --error-bg-color: #FFEBEE;
+    --link-text-color: #125B9B;
+
+    --highlightActiveColor: #B2EBF2;
+    --requiredColor: #D32F2F;
+    /* Red for required fields */
+    --closeIconColor: #616161;
+}
+
+$i: unquote($string: "!important");
+$flex: flex;
+$row: row;
+$column: column;
+$center: center;
+$justify: justify;
+$align: align;
+$wrap: wrap;
+$nowrap: nowrap;
+$gap: gap;
+$border: border;
+$forwards: forwards;
+$ease: ease;
+$ease-in-out: ease-in-out;
+$none: none;
+$solid: solid;
+$dashed: dashed;
+$double: double;
+$transparent: transparent;
+$cover: cover;
+$contain: contain;
+$auto: auto;
+$hidden: hidden;
+$visible: visible;
+$block: block;
+$inline: inline;
+$inline-block: inline-block;
+$flex-start: flex-start;
+$flex-end: flex-end;
+$space-between: space-between;
+$space-around: space-around;
+$space-evenly: space-evenly;
+$stretch: stretch;
+$wrap-reverse: wrap-reverse;
+$no-repeat: no-repeat;
+$pointer: pointer;
+$underline: underline;
+$line-through: line-through;
+$uppercase: uppercase;
+$lowercase: lowercase;
+$capitalize: capitalize;
+$normal: normal;
+$italic: italic;
+$bold: bold;
+$relative: relative;
+$absolute: absolute;
+$fixed: fixed;
+$sticky: sticky;

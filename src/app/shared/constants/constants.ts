@@ -1,0 +1,39 @@
+
+export class FV_CONSTANTS {
+    public static readonly APP_NAME_C: string = 'FlareVault';
+    public static TITLE_C: string = 'Title';
+    public static DESCRIPTION_C:string = 'Description';
+    public static STATUS_C: string = 'Status';
+    public static PRIORITY_C: string = 'Priority';
+    public static DUE_DATE_C: string = 'Due Date';
+    public static TAGS_C: string = 'Tags';
+    public static NOTIFICATIONS_ENABLED_C: string = 'Notifications';
+    public static CREATED_AT_C: string = 'Created';
+    public static UPDATED_AT_C: string = 'Updated';
+    public static BUTTON_C: string = 'button';
+    public static INPUT_C: string = 'input';
+    public static SELECT_C: string = 'select';
+    public static TEXTAREA_C: string = 'textarea';
+    public static CHECKBOX_C: string = 'checkbox';
+    public static RADIO_C: string = 'radio';
+    public static DATE_C: string = 'date';
+    public static TIME_C: string = 'time';
+    public static DATETIME_C: string = 'datetime';
+    public static DATETIME_LOCAL_C: string = 'datetime-local';
+    public static FILE_C: string = 'file';
+    public static NUMBER_C: string = 'number';
+    public static EMAIL_C: string = 'email';
+    public static PASSWORD_C: string = 'password';
+    public static URL_C: string = 'url';
+    public static SEARCH_C: string = 'search';
+    public static COLOR_C: string = 'color';
+    public static RANGE_C: string = 'range';
+    public static SUBMIT_C: string = 'submit';
+    public static RESET_C: string = 'reset';
+    public static HIDDEN_C: string = 'hidden';
+    public static TEXT_C: string = 'text';
+    public static CHECKED_C: string = 'checked';
+    public static UNCHECKED_C: string = 'unchecked';
+    public static ACTIVE_C: string = 'active';
+    public static INACTIVE_C: string = 'inactive';
+}

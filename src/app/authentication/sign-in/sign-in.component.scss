@@ -1,0 +1,172 @@
+@import '../../../assets/scss/mixins.scss';
+@import '../../../assets/scss/variables.scss';
+
+// @keyframes bg-marquee {
+//     0% {
+//         background-position: 0 0;
+//     }
+
+//     100% {
+//         background-position: 100% 0;
+//     }
+// }
+
+.fv-sign-in-section {
+    @include flex-center();
+    @include height(100dvh);
+    @include width(100dvw);
+    @include background-image(url('../../../assets/images/fv-wallpaper-2.jpeg'));
+    @include background-size(cover);
+
+    .fv-sign-in-container {
+        @include background-color(var(--glassyBg));
+        @include box-shadow(var(--shadow));
+        @include padding(2rem);
+        @include border-radius(var(--borderRadius));
+
+        .fv-header {
+            .fv-title {
+                @include font-size(2rem);
+                @include font-weight(500);
+                @include margin-bottom(1rem);
+            }
+
+            .fv-description {
+                @include font-size(1rem);
+                @include font-weight(400);
+                @include color(var(--text-secondary-color));
+                @include margin-bottom(2rem);
+            }
+        }
+
+        .fv-sign-in-form {
+            @include flex-column();
+            @include gap(1.5rem);
+
+            .fv-form-group {
+                @include flex-column();
+                @include gap(0.5rem);
+                @include position(relative);
+
+                .fv-form-label {
+                    @include font-size(0.875rem);
+                    @include font-weight(500);
+                    @include color(var(--labelTextColor));
+                }
+
+                .fv-form-input {
+                    @include padding(0.75rem);
+                    @include border(1px solid var(--inputBorder-color));
+                    @include border-radius(var(--borderRadius));
+                    @include background-color(var(--inputBg-color));
+                    @include font-size(1rem);
+                    @include width(100%);
+                }
+
+                .fv-error-message {
+                    @include position(absolute);
+                    @include top(50%);
+                    @include right(-10rem); // Adjust this based on your layout
+                    @include transform(translateY(-50%));
+                    @include background-color(var(--error-bg-color));
+                    @include color(var(--error-text-color));
+                    @include padding(0.5rem);
+                    @include border-radius(var(--borderRadius));
+                    @include white-space(nowrap);
+                    @include margin-top(10px);
+
+                    &::before {
+                        content: '';
+                        @include position(absolute);
+                        @include top(50%);
+                        @include left(-6px); // Position arrow to the left edge
+                        @include transform(translateY(-50%));
+                        @include width(0);
+                        @include height(0);
+                        @include border-top(6px solid transparent);
+                        @include border-bottom(6px solid transparent);
+                        @include border-right(6px solid var(--error-bg-color)); // arrow color same as background
+                    }
+
+                    .fv-error-text {
+                        @include color(var(--error-text-color));
+                    }
+                }
+            }
+
+            .fv-action-item-group {
+                @include flex-row();
+                @include justify-content(space-between);
+                @include align-items(center);
+                @include width(100%);
+
+                .fv-switch-link {
+                    .fv-bs-switch {
+                        .fv-form-switch-label {
+                            @include color(var(--switch-label));
+                        }
+                    }
+                }
+            }
+
+            .fv-bottom-actions-group {
+                @include flex-column();
+                @include gap(1rem);
+
+                .fv-sign-in-btn {
+                    @include padding(var(--buttonPadding));
+                    @include background-color(var(--primary-color));
+                    @include color(var(--surface-color));
+                    @include border-radius(var(--borderRadius));
+                    @include font-size(1rem);
+                    @include font-weight(500);
+                    @include border(none);
+                    @include cursor(pointer);
+                    @include transition(all var(--transitionDuration) var(--ease-in-out));
+                    @include display($flex);
+                    @include align-items(center);
+                    @include justify-content(center);
+                    @include gap(0.5rem);
+
+                    &:hover {
+                        @include background-color(var(--primary-hover-color));
+                    }
+                }
+
+                .fv-sign-in-with-google-btn {
+                    @include display(flex);
+                    @include align-items(center);
+                    @include justify-content(center);
+                    @include padding(var(--buttonPadding));
+                    @include background-color(var(--google-button-bg-color));
+                    @include color(var(--text-primary-color));
+                    @include border-radius(var(--borderRadius));
+                    @include font-size(1rem);
+                    @include border(1px solid var(--google-button-border-color));
+                    @include gap(0.5rem);
+
+                    &:hover {
+                        @include background-color(var(--google-button-hover-bg-color));
+                    }
+                }
+
+                .fv-link-paragraph {
+                    @include font-size(0.875rem);
+                    @include font-weight(400);
+                    @include color(var(--text-secondary-color));
+                    @include text-align($center);
+                    @include cursor($pointer);
+
+                    a {
+                        @include color(var(--primary-color));
+                        @include text-decoration(underline);
+
+                        &:hover {
+                            @include color(var(--primary-hover-color));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

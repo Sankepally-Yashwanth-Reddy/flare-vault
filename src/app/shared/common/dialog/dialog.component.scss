@@ -1,0 +1,9 @@
+@import '../../../../assets/scss/variables.scss';
+@import '../../../../assets/scss/mixins.scss';
+
+.fv-dialog {
+    .fv-header {
+        @include flex-row();
+        @include justify-content(space-between);
+    }
+}

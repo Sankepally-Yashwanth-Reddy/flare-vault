@@ -1,0 +1,299 @@
+@mixin box-sizing($val) {
+    -webkit-box-sizing: $val;
+    -moz-box-sizing: $val;
+    box-sizing: $val;
+}
+
+@mixin margin($val) {
+    margin: $val;
+}
+
+@mixin margin-top($val) {
+    margin-top: $val;
+}
+
+@mixin margin-right($val) {
+    margin-right: $val;
+}
+
+@mixin margin-left($val) {
+    margin-left: $val;
+}
+
+@mixin margin-bottom($val) {
+    margin-bottom: $val;
+}
+
+@mixin padding($val) {
+    padding: $val;
+}
+
+@mixin padding-top($val) {
+    padding-top: $val;
+}
+
+@mixin padding-right($val) {
+    padding-right: $val;
+}
+
+@mixin padding-left($val) {
+    padding-left: $val;
+}
+
+@mixin padding-bottom($val) {
+    padding-bottom: $val;
+}
+
+@mixin flex-center() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-column() {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-row() {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin display($val) {
+    display: $val;
+}
+
+@mixin text-align($val) {
+    text-align: $val;
+}
+
+@mixin font-size($val) {
+    font-size: $val;
+}
+
+@mixin font-weight($val) {
+    font-weight: $val;
+}
+
+@mixin color($val) {
+    color: $val;
+}
+
+@mixin background-color($val) {
+    background-color: $val;
+}
+
+@mixin border-radius($val) {
+    border-radius: $val;
+}
+
+@mixin border($val) {
+    border: $val;
+}
+
+@mixin border-top($val) {
+    border-top: $val;
+}
+
+@mixin border-right($val) {
+    border-right: $val;
+}
+
+@mixin border-bottom($val) {
+    border-bottom: $val;
+}
+
+@mixin border-left($val) {
+    border-left: $val;
+}
+
+@mixin box-shadow($val) {
+    box-shadow: $val;
+}
+
+@mixin outline($val) {
+    outline: $val;
+}
+
+@mixin outline-offset($val) {
+    outline-offset: $val;
+}
+
+@mixin transition($val) {
+    transition: $val;
+}
+
+@mixin cursor($val) {
+    cursor: $val;
+}
+
+@mixin overflow($val) {
+    overflow: $val;
+}
+
+@mixin position($val) {
+    position: $val;
+}
+
+@mixin z-index($val) {
+    z-index: $val;
+}
+
+@mixin width($val) {
+    width: $val;
+}
+
+@mixin height($val) {
+    height: $val;
+}
+
+@mixin max-width($val) {
+    max-width: $val;
+}
+
+@mixin max-height($val) {
+    max-height: $val;
+}
+
+@mixin min-width($val) {
+    min-width: $val;
+}
+
+@mixin min-height($val) {
+    min-height: $val;
+}
+
+@mixin overflow-x($val) {
+    overflow-x: $val;
+}
+
+@mixin overflow-y($val) {
+    overflow-y: $val;
+}
+
+@mixin flex-wrap($val) {
+    flex-wrap: $val;
+}
+
+@mixin align-items($val) {
+    align-items: $val;
+}
+
+@mixin justify-content($val) {
+    justify-content: $val;
+}
+
+@mixin align-self($val) {
+    align-self: $val;
+}
+
+@mixin flex-grow($val) {
+    flex-grow: $val;
+}
+
+@mixin flex-shrink($val) {
+    flex-shrink: $val;
+}
+
+@mixin flex-basis($val) {
+    flex-basis: $val;
+}
+
+@mixin animation($val) {
+    animation: $val;
+}
+
+@mixin opacity($val) {
+    opacity: $val;
+}
+
+@mixin transform($val) {
+    transform: $val;
+}
+
+@mixin align-content($val) {
+    align-content: $val;
+}
+
+@mixin gap($val) {
+    gap: $val;
+}
+
+@mixin background-image($val) {
+    background-image: $val;
+}
+
+@mixin background-size($val) {
+    background-size: $val;
+}
+
+@mixin background-repeat($val) {
+    background-repeat: $val;
+}
+
+@mixin background-position($val) {
+    background-position: $val;
+}
+
+@mixin content($val) {
+    content: $val;
+}
+
+@mixin top($val) {
+    top: $val;
+}
+
+@mixin left($val) {
+    left: $val;
+}
+
+@mixin right($val) {
+    right: $val;
+}
+
+@mixin bottom($val) {
+    bottom: $val;
+}
+
+@mixin appearance($val) {
+    appearance: $val;
+}
+
+@mixin text-align($val) {
+    text-align: $val;
+}
+
+@mixin text-decoration($val) {
+    text-decoration: $val;
+}
+
+@mixin white-space($val) {
+    white-space: $val;
+}
+
+@mixin fv-color($type, $color) {
+    @if $type =='bg' {
+        background-color: $color;
+    }
+
+    @else if $type =='text' {
+        color: $color;
+    }
+
+    @else if $type =='border' {
+        border-color: $color;
+    }
+
+    @else {
+        @warn "Unknown type `#{$type}` for fv-color mixin. Use 'bg', 'text', or 'border'.";
+    }
+}
+
+@mixin flex($val) {
+    flex: $val;
+}
+
+@mixin pointer-events($val) {
+    pointer-events: $val;
+}

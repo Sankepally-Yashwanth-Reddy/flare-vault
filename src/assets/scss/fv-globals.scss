@@ -1,0 +1,100 @@
+:focus-visible,
+:focus {
+    @include outline(2px solid var(--focusOutline) $i);
+    @include outline-offset(2px);
+    @include box-shadow(none $i);
+    // @include animation(animateOutline 0.3s $ease-in-out $forwards);
+}
+
+// /* Keyframes for the outline animation */
+// @keyframes animateOutline {
+//     0% {
+//         @include outline-offset(6px);
+//         @include opacity(0.5);
+//     }
+//     100% {
+//         @include outline-offset(2px);
+//         @include opacity(1);
+//     }
+// }
+
+
+.fv-g-link {
+    @include color(var(--link-text-color));
+}
+
+.fv-refresh-icon {
+    transition: transform 0.3s ease;
+    /* Smooth transition for rotation */
+}
+
+.fv-refreshing {
+    transform: rotate(360deg);
+    /* Rotate 360 degrees */
+}
+
+.fv-g-modal {
+    .fv-g-modal-dialog {
+        .fv-g-modal-content {
+            .fv-g-modal-header {
+                @include display(flex);
+                @include justify-content(space-between);
+                @include align-items(center);
+
+                .fv-g-modal-title {
+                    @include font-weight(normal);
+                }
+
+                .fv-g-modal-close {
+                    @include display(flex);
+                    @include align-items(center);
+                    @include justify-content(center);
+                    @include background-image(none);
+                }
+            }
+
+            .fv-g-modal-dialog-body {
+                .fv-g-ctf-form {
+                    @include padding(1rem);
+
+                    .fv-g-ctf-form-group {
+                        @include margin-bottom(1rem);
+                        @include flex-column();
+                        @include align-items(stretch);
+                        @include gap(0.5rem);
+
+                        .fv-g-ctf-label {
+                            @include font-weight(bold);
+                            @include margin-bottom(0.5rem);
+                        }
+
+                        .fv-g-ctf-input, .fv-g-ctf-textarea, .fv-g-ctf-select {
+                            @include width(100%);
+                            @include padding(0.5rem);
+                            @include border(1px solid var(--inputBorder-color));
+                            @include border-radius(4px);
+                            @include box-shadow(none);
+
+                            &:focus {
+                                @include outline(2px solid var(--focusOutline) $i);
+                                @include outline-offset(2px);
+                                @include box-shadow(none $i);
+                            }
+
+                            .fv-g-ctf-select-option {
+                                @include padding(0.5rem);
+                                @include background-color(var(--selectOption-bg-color));
+                                @include color(var(--selectOption-text-color));
+
+                                &:hover {
+                                    @include background-color(var(--selectOption-hover-bg-color));
+                                    @include color(var(--text-white));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

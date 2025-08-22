@@ -1,0 +1,233 @@
+<section class="fv-tasks-section">
+    <h1 class="fv-tasks-title">
+        {{ 'TASKS_L' | translate }}
+    </h1>
+
+    <div class="fv-tasks-toolbar">
+        <div class="fv-search-tasks-form">
+            <form class="fv-search-tasks-form-container d-flex">
+                <label class="visually-hidden" for="search-tasks">
+                    {{ 'SEARCH_TASKS_L' | translate }}
+                </label>
+                <input id="search-tasks" type="text" class="form-control" placeholder="{{ 'SEARCH_L' | translate }}" />
+                <span class="fv-search-icon"></span>
+            </form>
+        </div>
+
+        <div class="fv-tasks-toolbar-actions">
+            <div class="fv-actions-group">
+                <button type="button" mat-icon-button matTooltip="{{ 'CREATE_TASK_L' | translate }}"
+                    class="fv-action-icon-btn" data-bs-toggle="modal" data-bs-target="#createTaskModal">
+                    <span class="fv-add-icon"></span>
+                    <span class="visually-hidden">
+                        {{ 'CREATE_TASK_L' | translate }}
+                    </span>
+                </button>
+                <button type="button" mat-icon-button matTooltip="{{ 'REFRESH_TASKS_L' | translate }}"
+                    class="fv-action-icon-btn" (click)="refreshTasks()">
+                    <span class="fv-refresh-icon" [ngClass]="{ 'fv-refreshing': animateRefreshIconTime > 0 }"></span>
+                    <span class="visually-hidden">
+                        {{ 'REFRESH_TASKS_L' | translate }}
+                    </span>
+                </button>
+            </div>
+            <div class="fv-vertical-divider"></div>
+            <div class="fv-actions-group">
+                <button type="button" mat-icon-button matTooltip="{{ 'GRID_VIEW_L' | translate }}"
+                    class="fv-action-icon-btn fv-grid-view-btn" (click)="toggleView('grid')"
+                    [ngClass]="{ 'active': isGridView }">
+                    <span class="fv-grid-view-icon"></span>
+                    <span class="visually-hidden">
+                        {{ 'GRID_VIEW_L' | translate }}
+                    </span>
+                </button>
+
+                <button type="button" mat-icon-button matTooltip="{{ 'LIST_VIEW_L' | translate }}"
+                    class="fv-action-icon-btn fv-list-view-btn" (click)="toggleView('list')"
+                    [ngClass]="{ 'active': isListView }">
+                    <span class="fv-list-view-icon"></span>
+                    <span class="visually-hidden">
+                        {{ 'LIST_VIEW_L' | translate }}
+                    </span>
+                </button>
+
+                <button type="button" mat-icon-button matTooltip="{{ 'KANBAN_VIEW_L' | translate }}"
+                    class="fv-action-icon-btn fv-list-view-btn" (click)="toggleView('kanban')"
+                    [ngClass]="{ 'active': isKanbanView }">
+                    <span class="fv-kanban-view-icon"></span>
+                    <span class="visually-hidden">
+                        {{ 'KANBAN_VIEW_L' | translate }}
+                    </span>
+                </button>
+            </div>
+            <div class="fv-vertical-divider"></div>
+            <div class="fv-actions-group">
+                <button type="button" mat-icon-button matTooltip="{{ 'FILTER_TASKS_L' | translate }}"
+                    class="fv-action-icon-btn fv-filter-tasks-btn">
+                    <span class="fv-filter-icon"></span>
+                    <span class="visually-hidden">
+                        {{ 'FILTER_TASKS_L' | translate }}
+                    </span>
+                </button>
+
+                <div class="dropdown">
+                    <button type="button" mat-icon-button matTooltip="{{ 'SORT_TASKS_L' | translate }}"
+                        class="fv-action-icon-btn fv-sort-tasks-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="fv-sort-icon"></span>
+                        <span class="visually-hidden">
+                            {{ 'SORT_TASKS_L' | translate }}
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><button type="button" class="dropdown-item">Action</button></li>
+                        <li><button type="button" class="dropdown-item">Another action</button></li>
+                        <li><button type="button" class="dropdown-item">Something else here</button></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button type="button" mat-icon-button matTooltip="{{ 'MORE_ACTIONS_L' | translate }}"
+                        class="fv-action-icon-btn fv-sort-tasks-btn" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="fv-more-icon"></span>
+                        <span class="visually-hidden">
+                            {{ 'MORE_ACTIONS_L' | translate }}
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><button type="button" class="dropdown-item">Action</button></li>
+                        <li><button type="button" class="dropdown-item">Another action</button></li>
+                        <li><button type="button" class="dropdown-item">Something else here</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fv-main-container">
+        @if (loading) {
+            <div class="fv-img-loader">
+                <img src="assets/svg/flarevault-loader-slow.svg" alt="{{ 'LOADING_L' | translate }}"
+                class="fv-loading-image"
+                />
+            </div>
+        }
+
+        @if (isListView) {
+        <ag-grid-angular class="ag-theme-alpine fv-tasks-grid" [rowData]="rowData" [columnDefs]="columnDefs"
+            [defaultColDef]="defaultColDef" [pagination]="true" [paginationPageSize]="paginationSize()"
+            [rowSelection]="'multiple'"></ag-grid-angular>
+        } @else if (isGridView) {
+        <!-- Placeholder for Grid view -->
+        <div class="fv-tasks-grid-view d-flex justify-content-center align-items-center h-100">
+            <p>{{ 'WORK_IN_PROGRESS_L' | translate }}</p>
+        </div>
+        } @else {
+        <!-- Placeholder for Kanban view -->
+        <div class="fv-tasks-kanban-view d-flex justify-content-center align-items-center h-100">
+            <p>{{ 'WORK_IN_PROGRESS_L' | translate }}</p>
+        </div>
+        }
+    </div>
+</section>
+
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade fv-g-modal" id="createTaskModal" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
+    aria-labelledby="createTaskModalLabel" aria-hidden="true" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable fv-g-modal-dialog">
+        <div class="modal-content fv-g-modal-content">
+            <div class="modal-header fv-g-modal-header">
+                <h2 class="modal-title fs-5 fv-g-modal-title" id="createTaskModalLabel">
+                    {{ 'CREATE_TASK_L' | translate }}
+                </h2>
+                <button type="button" class="btn-close fv-g-modal-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span class="fv-icon-close"></span>
+                </button>
+            </div>
+
+            <div class="modal-body fv-g-modal-dialog-body">
+                <form class="fv-g-ctf-form">
+                    <div class="fv-g-ctf-form-group">
+                        <label for="taskTitle" class="fv-g-ctf-label">{{ 'TITLE_L' | translate }}</label>
+                        <input [(ngModel)]="newTask.title" name="title" type="text" id="taskTitle"
+                            class="fv-g-ctf-input" required cdkFocusInitial tabindex="0" appAutofocus/>
+                    </div>
+
+                    <div class="fv-g-ctf-form-group">
+                        <label for="taskDescription" class="fv-g-ctf-label">{{ 'DESCRIPTION_L' | translate }}</label>
+                        <textarea [(ngModel)]="newTask.description" name="description" id="taskDescription"
+                            class="fv-g-ctf-textarea"></textarea>
+                    </div>
+
+                    <div class="fv-g-ctf-form-group">
+                        <label for="taskStatus" class="fv-g-ctf-label">{{ 'TASK_STATUS_L' | translate }}</label>
+                        <select [(ngModel)]="newTask.status" name="status" id="taskStatus"
+                            class="fv-g-ctf-select">
+                            <option value="todo" class="fv-g-ctf-select-option">{{ 'TODO_L' | translate }}</option>
+                            <option value="in_progress" class="fv-g-ctf-select-option">{{ 'IN_PROGRESS_L' | translate }}</option>
+                            <option value="done" class="fv-g-ctf-select-option">{{ 'DONE_L' | translate }}</option>
+                        </select>
+                    </div>
+
+                    <div class="fv-g-ctf-form-group">
+                        <label for="taskPriority" class="fv-g-ctf-label">{{ 'TASK_PRIORITY_L' | translate }}</label>
+                        <select [(ngModel)]="newTask.priority" name="priority" id="taskPriority"
+                            class="fv-g-ctf-select">
+                            <option value="low" class="fv-g-ctf-select-option">{{ 'LOW_L' | translate }}</option>
+                            <option value="medium" class="fv-g-ctf-select-option">{{ 'MEDIUM_L' | translate }}</option>
+                            <option value="high" class="fv-g-ctf-select-option">{{ 'HIGH_L' | translate }}</option>
+                        </select>
+                    </div>
+
+                    <div class="fv-g-ctf-form-group">
+                        <label for="taskDueDate" class="fv-g-ctf-label">{{ 'TASK_DUE_DATE_L' | translate }}</label>
+                        <input [(ngModel)]="newTask.due_date" name="due_date" type="date" id="taskDueDate"
+                            class="fv-g-ctf-input" />
+                    </div>
+
+                    <div class="fv-g-ctf-form-group">
+                        <label for="taskTags" class="fv-g-ctf-label">{{ 'TASK_TAGS_L' | translate }}</label>
+                        <input [(ngModel)]="newTask.tagsString" name="tagsString" type="text" id="taskTags"
+                            class="fv-g-ctf-input" placeholder="{{ 'ADD_TAGS_L' | translate }}" />
+                    </div>
+
+                    <div class="fv-g-ctf-form-group">
+                        <div class="form-check form-switch fv-g-form-switch">
+                            <input class="form-check-input fv-g-form-switch-input" type="checkbox" [(ngModel)]="newTask.notifications_enabled"
+                                name="notifications_enabled" id="notificationsToggle" />
+                            <label class="form-check-label fv-g-form-switch-label" for="notificationsToggle">
+                                {{'NOTIFICATIONS_L' | translate }}
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="submitTask()" data-bs-dismiss="modal">
+                    {{ 'CREATE_TASK_L' | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #tasksActionTemplate let-data="data" let-rowIndex="rowIndex">
+    <div class="d-flex align-items-center gap-1">
+        <button type="button" mat-icon-button matTooltip="{{ 'EDIT_TASK_L' | translate }}"
+            class="fv-action-icon-btn fv-edit-task-btn" (click)="editTask(data)">
+            <span class="fv-edit-icon"></span>
+            <span class="visually-hidden">
+                {{ 'EDIT_TASK_L' | translate }}
+            </span>
+        </button>
+
+        <button type="button" mat-icon-button matTooltip="{{ 'DELETE_TASK_L' | translate }}"
+            class="fv-action-icon-btn fv-delete-task-btn" (click)="deleteTask(data)">
+            <span class="fv-delete-icon"></span>
+            <span class="visually-hidden">
+                {{ 'DELETE_TASK_L' | translate }}
+            </span>
+        </button>
+    </div>
+</ng-template>

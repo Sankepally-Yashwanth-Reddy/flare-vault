@@ -1,0 +1,24 @@
+<nav class="fv-sidebar-nav" [class.collapsed]="!isSidebarOpen">
+    <button type="button" [attr.aria-label]="isSidebarOpen ? 'Close Sidebar': 'Open Sidebar'"
+        [matTooltip]="isSidebarOpen ? 'Close Sidebar': 'Open Sidebar'" matTooltipPosition="right" tabindex="0" (click)="toggleSidebar()"
+        title="{{isSidebarOpen ? 'Close Sidebar': 'Open Sidebar'}}" mat-icon-button
+        class="fv-menu-toggle-button d-flex align-items-center justify-content-center"
+        [class]="isSidebarOpen ? 'ms-auto': 'me-auto'">
+        <!-- @if(isSidebarOpen) {
+        <span>Menu</span>
+    } -->
+        <span class="fv-icon fv-icon-menu" [ngClass]="isSidebarOpen ? 'fv-icon-close' : 'fv-icon-open'"></span>
+    </button>
+
+    <ul class="fv-menu-items" role="list">
+        @for (item of navItems; track item) {
+        <li class="fv-menu-item" role="listitem">
+            <a [routerLink]="item.route" routerLinkActive="active" [attr.aria-label]="item.label" class="fv-menu-link"
+                matTooltip="{{!isSidebarOpen? item.label : null }}" matTooltipPosition="right">
+                <span class="fv-icon fv-menu-icon-outline" ngClass="{{item.icon}}"></span>
+                <span class="fv-label-txt">{{ item.label }}</span>
+            </a>
+        </li>
+        }
+    </ul>
+</nav>

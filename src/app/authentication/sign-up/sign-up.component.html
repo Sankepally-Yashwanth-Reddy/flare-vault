@@ -1,0 +1,93 @@
+<section class="fv-sign-up-section">
+    <div class="fv-sign-up-container">
+        <div class="fv-header">
+            <h1 class="visually-hidden">FlareVault</h1>
+            <h2 class="fv-title">Sign Up</h2>
+            <p class="fv-description">
+                Create a new account to access FlareVault.
+                <br> 
+                <span class="fv-sub-description">
+                    Please fill in the details below to get started.
+                </span>
+            </p>
+        </div>
+
+        <form class="fv-sign-up-form" [formGroup]="signUp" (ngSubmit)="onSignUpSubmit()">
+            <!-- Email -->
+            <div class="fv-form-group">
+                <label for="email" class="fv-form-label">Email</label>
+                <input type="email" id="email" class="fv-form-input" formControlName="email"
+                    placeholder="Enter your email" required>
+
+                <div *ngIf="signUp.get('email')?.touched && signUp.get('email')?.invalid" class="fv-error-message">
+                    <span *ngIf="signUp.get('email')?.errors?.['required']" class="fv-error-text">
+                        Email is required.
+                    </span>
+                    <span *ngIf="signUp.get('email')?.errors?.['email']" class="fv-error-text">
+                        Please enter a valid email address.
+                    </span>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="fv-form-group">
+                <label for="password" class="fv-form-label">Password</label>
+                <input type="password" id="password" class="fv-form-input" formControlName="password"
+                    placeholder="Enter your password" required>
+
+                <div *ngIf="signUp.get('password')?.touched && signUp.get('password')?.invalid" class="fv-error-message">
+                    <span *ngIf="signUp.get('password')?.errors?.['required']" class="fv-error-text">
+                        Password is required.
+                    </span>
+                    <span *ngIf="signUp.get('password')?.errors?.['minlength']" class="fv-error-text">
+                        Password must be at least 6 characters long.
+                    </span>
+                </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="fv-form-group">
+                <label for="confirmPassword" class="fv-form-label">Confirm Password</label>
+                <input type="password" id="confirmPassword" class="fv-form-input" formControlName="confirmPassword"
+                    placeholder="Confirm your password" required>
+
+                <div *ngIf="signUp.get('confirmPassword')?.touched && signUp.get('confirmPassword')?.invalid" class="fv-error-message">
+                    <span *ngIf="signUp.get('confirmPassword')?.errors?.['required']" class="fv-error-text">
+                        Confirm password is required.
+                    </span>
+                </div>
+
+                <div *ngIf="signUp.errors?.['notMatching'] && signUp.get('confirmPassword')?.touched" class="fv-error-message">
+                    <span class="fv-error-text">Passwords do not match.</span>
+                </div>
+            </div>
+
+            <!-- Remember Me + Forgot Password -->
+            <div class="fv-action-item-group">
+                <div class="fv-switch-link">
+                    <div class="form-check form-switch fv-bs-switch">
+                        <input class="form-check-input fv-form-switch-input" type="checkbox" role="switch"
+                            id="rememberMe">
+                        <label class="form-check-label fv-form-switch-label" for="rememberMe">Remember Me</label>
+                    </div>
+                </div>
+                <a routerLink="/forgot-password" class="fv-link">Forgot Password</a>
+            </div>
+
+            <!-- Actions -->
+            <div class="fv-bottom-actions-group">
+                <button type="submit" class="fv-sign-in-btn">
+                    <span class="login-icon fv-icon mt-1"></span>
+                    <span>Sign Up</span>
+                </button>
+                <button type="button" class="fv-sign-in-with-google-btn" (click)="onGoogleSignIn()">
+                    <span class="google-icon fv-icon"></span>
+                    <span>Sign Up with Google</span>
+                </button>
+                <p class="fv-link-paragraph">
+                    Already have an account ? <a class="fv-g-link" routerLink="/">Sign In</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</section>

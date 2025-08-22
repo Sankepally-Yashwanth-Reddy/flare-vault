@@ -1,0 +1,165 @@
+.fv-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  
+    .fv-home-link {
+      display: flex;
+      align-items: center;
+
+      .fv-logo-img {
+        height: 40px;
+      }
+    }
+  
+    .fv-g-search-form {
+      position: relative;
+      flex: 1;
+      max-width: 400px;
+      margin: 0 1rem;
+      display: flex;
+      align-items: center;
+  
+      .fv-search-input {
+        width: 100%;
+        padding: 0.5rem 2.5rem 0.5rem 1rem;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        font-size: 1rem;
+        transition: border-color 0.2s ease;
+  
+        &:focus {
+          outline: none;
+          border-color: #3f51b5;
+          box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.1);
+        }
+      }
+  
+      .fv-search-icon {
+        position: absolute;
+        right: 0.75rem;
+        font-size: 1.25rem;
+        color: #888;
+        pointer-events: none;
+      }
+    }
+  
+    .fv-menu-list {
+      list-style: none;
+      display: flex;
+      gap: 0.75rem;
+      margin: 0;
+      padding: 0;
+  
+      .fv-menu-item {
+        .fv-header-icon-btn {
+          background: none;
+          border: none;
+          padding: 0.5rem;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+  
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+          }
+  
+          .fv-bell-icon,
+          .fv-profile-icon {
+            font-size: 1.5rem;
+            color: #333;
+          }
+        }
+
+        .fv-profile-dropdown {
+          margin-top: 2px;
+
+          .fv-profile-dropdown-toggler {
+
+            .fv-username {
+              // truncate text
+              display: inline-block;
+              max-width: 100px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              font-size: 1rem;
+              color: #333;
+
+            }
+
+            .fv-avatar-container {
+              border-radius: 50%;
+
+              .fv-abbr-text {
+                background-color: #3f51b5;
+                color: #fff;
+              }
+            }
+          }
+
+          .fv-dropdown-items-container {
+            .fv-dropdown-list-item {
+              .fv-dropdown-item {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.5rem 1rem;
+
+                &:focus-visible {
+                  outline-offset: -2px;
+                }
+              }
+
+              .fv-profile-menu-item {
+                .fv-profile-container {
+                  display: flex;
+                  flex-direction: column;
+
+                  .fv-username {
+                    font-weight: bold;
+                    color: #333;
+                    // truncate text
+                    display: inline-block;
+                    max-width: 150px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+
+                  .fv-user-email {
+                    font-size: 0.875rem;
+                    color: #666;
+                    // truncate text
+                    display: inline-block;
+                    max-width: 150px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    // Responsive tweak (optional)
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+      .fv-g-search-form {
+        order: 2;
+        width: 100%;
+        margin: 1rem 0;
+      }
+      .fv-menu-list {
+        order: 3;
+      }
+    }
+  }
+  

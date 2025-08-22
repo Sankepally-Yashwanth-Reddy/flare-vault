@@ -1,0 +1,14 @@
+<div class="alert-container">
+    <div *ngFor="let alert of service.notifications()" class="alert" [ngClass]="'alert-' + alert.type">
+        <span class="d-flex gap-1">
+            <span [ngClass]="{
+                'fv-icon-info': alert.type === 'info',
+                'fv-icon-success': alert.type === 'success',
+                'fv-icon-warning': alert.type === 'warning',
+                'fv-icon-error': alert.type === 'error'
+        }"></span>
+        <span>{{ alert.message }}</span>
+        </span>
+        <button (click)="service.dismiss(alert.id)" class="close-btn">&times;</button>
+    </div>
+</div>

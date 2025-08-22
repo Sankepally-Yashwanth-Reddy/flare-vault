@@ -1,0 +1,128 @@
+@import '../../assets/scss/mixins.scss';
+@import '../../assets/scss/variables.scss';
+
+.fv-tasks-section {
+    @include padding(1rem 2rem);
+
+    .fv-tasks-title {
+        @include font-size(1.5rem);
+        @include font-weight(600);
+        @include margin-bottom(1rem);
+    }
+
+    .fv-tasks-toolbar {
+        @include display(flex);
+        @include flex-wrap(wrap);
+        @include justify-content(space-between);
+        @include align-items(center);
+        @include gap(1rem);
+        @include margin-bottom(1.5rem);
+
+        .fv-search-tasks-form {
+            @include flex(0 1 $auto);
+            @include max-width(280px);
+            @include width(100%);
+
+            .fv-search-tasks-form-container {
+                @include position($relative);
+
+                input.form-control {
+                    @include padding-right(2rem);
+                    @include height(2.5rem);
+                    @include font-size(0.95rem);
+                }
+
+                .fv-search-icon {
+                    @include position($absolute);
+                    @include right(0.75rem);
+                    @include top(50%);
+                    @include transform(translateY(-50%));
+                    @include pointer-events(none);
+                    @include font-size(1.5rem);
+                }
+            }
+        }
+
+        .fv-tasks-toolbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+
+            .fv-actions-group {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+
+                .fv-action-icon-btn {
+                    padding: 0.5rem;
+                    border-radius: 0.375rem;
+                    transition: background-color 0.2s;
+
+                    &.active {
+                        // background-color: var(--fv-active-bg, #eef2ff);
+                        @include background-color(var(--highlightActiveColor));
+                    }
+
+                    &:hover {
+                        background-color: var(--fv-hover-bg, #f4f4f5);
+                    }
+                }
+            }
+
+            .fv-vertical-divider {
+                width: 1px;
+                height: 1.75rem;
+                background-color: #ddd;
+                margin: 0 0.5rem;
+            }
+
+            .dropdown {
+                position: relative;
+
+                .dropdown-menu {
+                    min-width: 10rem;
+                    padding: 0.5rem 0;
+                    font-size: 0.9rem;
+                    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+                }
+
+                .dropdown-item {
+                    padding: 0.5rem 1rem;
+
+                    &:hover {
+                        background-color: #f1f1f1;
+                    }
+                }
+            }
+        }
+    }
+
+    .fv-main-container {
+        .fv-tasks-grid {
+            height: calc(100vh - 230px); // Adjust based on header/footer height
+        }
+
+        .fv-img-loader {
+            @include position($absolute);
+            @include z-index(1000);
+            @include top(50%);
+            @include left(50%);
+
+            .fv-loading-image {
+                height: 80px;
+                width: 80px;
+            }
+        }
+    }
+}
+
+.offcanvas.show:not(.hiding),
+.fv-offcanvas-right {
+  width: 250px !important;
+  position: absolute !important;
+  top: 65px !important; // Adjust to match your actual header height
+//   z-index: 1050 !important; // Ensure it appears above ag-grid or other content
+}
+
+  
