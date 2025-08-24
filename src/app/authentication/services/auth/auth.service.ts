@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
 import { getAuth, signInWithPopup, GoogleAuthProvider, Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
-import { environment } from '../../../../../environment';
 import { Router } from '@angular/router';
 import { createClient } from '@supabase/supabase-js';
+import { environment } from '../../../../environment';
 
 const supabase = createClient(
   environment.supabase.url,

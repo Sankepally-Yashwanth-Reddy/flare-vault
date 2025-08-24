@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { createClient } from '@supabase/supabase-js';
-import { environment } from '../../../../environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../authentication/services/auth/auth.service';
+import { environment } from '../../../environment';
 
 const supabase = createClient(
   environment.supabase.url,
